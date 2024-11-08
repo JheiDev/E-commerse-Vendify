@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reestablecer</title>
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="contenedor_form">
+            <form action="@Url.Action("Reestablecer","Acceso")" method="post">
+
+                <h1>RECUPERA TU CONTRASEÑA</h1>
+
+                <hr>
+
+                <p class="mensaje">Ingrese su direccion de correo electronico y le enviaremos su nueva contraseña.</p>
+
+                <hr>
+
+                <div class="ctn_input">
+                    <label for="inputEmail">Ingresa tu correo:</label>
+                    <input id="inputEmail" name="correo" type="email" placeholder="Ejemplo@vendify.com" />
+                </div>
+
+                @{
+                    if (ViewBag.Error != null)
+                    {
+                        <div class="ctn_error">
+                            @ViewBag.Error
+                        </div>
+                    }
+                }
+
+                <div class="ctn_button">
+                    <button class="btn_restablecer" type="submit">Reestablecer contraseña</button>
+                    <p style="text-align: center;">¿Tienes una cuenta? <a href="@Url.Action("LoginCliente","Acceso")" class="registrate">Inicia sesión aquí</a></p>
+                    <p style="text-align: center;">¿No tienes una cuenta? <a href="@Url.Action("Registrar","Acceso")" class="registrate"> Registrate aquí</a></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>

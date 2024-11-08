@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="contenedor">
+        <div class="contenedor_form">
+            <form action="@Url.Action("LoginCliente","Acceso")" method="post">
+
+                <h1>LOGIN</h1>
+
+                <div class="ctn_input">
+                    <label for="inputEmail">Correo:</label>
+                    <input id="inputEmail" name="correo" type="email" placeholder="Ingrese su correo" />
+                </div>
+
+                <div class="ctn_input">
+                    <label for="inputPassword">Contraseña:</label>
+                    <input id="inputPassword" name="clave" type="password" placeholder="Ingrese su contraseña" />
+                </div>
+
+                @{
+                    if (ViewBag.Error != null)
+                    {
+                        <div class="ctn_error">
+                            @ViewBag.Error
+                        </div>
+                    }
+                }
+
+                <div class="ctn_button">
+                    <button type="submit">Iniciar Sesion</button>
+                    <div class="separar"></div>
+                    <a class="olvidaste_clave" href="@Url.Action("Reestablecer","Acceso")">¿Olvidaste tu contraseña?</a>
+                    <p style="text-align: center;">¿No tienes una cuenta? <a href="@Url.Action("Registrar","Acceso")" class="registrate"> Registrate aquí</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>

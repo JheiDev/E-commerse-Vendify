@@ -1,0 +1,72 @@
+﻿@model CapaEntidades.Cliente
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar</title>
+    <link href="~/Content/registrar-cliente.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="contenedor">
+        <div class="contenedor_form">
+            <form action="@Url.Action("Registrar","Acceso")" method="post">
+
+                <h1>REGISTRATE</h1>
+
+                <hr>
+
+                <div class="ctn_col_input">
+                    <div class="ctn_input">
+                        @Html.Label("txtnombre", "Nombres:")
+                        @Html.TextBoxFor(m => m.Nombres, new { @id = "txtnombre", @placeholder = "Ingrese su nombre", value = ViewData["Nombres"] })
+                    </div>
+                    <div class="ctn_input">
+                        @Html.Label("txtapellidos", "Apellidos:")
+                        @Html.TextBoxFor(m => m.Apellidos, new { @id = "txtapellidos", @placeholder = "Ingrese sus apellidos", value = ViewData["Apellidos"] })
+                    </div>
+                </div>
+
+                <div class="ctn_input">
+                    @Html.Label("txtcorreo", "Correo:")
+                    @Html.TextBoxFor(m => m.Correo, new { @id = "txtcorreo", @placeholder = "Ingrese su correo electronico", value = ViewData["Correo"] })
+                </div>
+
+                <div class="ctn_col_input">
+                    <div class="ctn_input">
+                        @Html.Label("txtclave", "Contraseña:")
+                        @Html.PasswordFor(m => m.Clave, new { @id = "txtclave", @placeholder = "Ingrese su contraseña" })
+                    </div>
+                    <div class="ctn_input">
+                        @Html.Label("txtconfirmaclave", "Confirmar Contraseña:")
+                        @Html.PasswordFor(m => m.ConfirmarClave, new { @id = "txtconfirmaclave", @placeholder = "Confirmar contraseña" })
+                    </div>
+                </div>
+
+                @{
+                    if (ViewBag.Error != null)
+                    {
+                        <div class="ctn_error">
+                            @ViewBag.Error
+                        </div>
+                    }
+                }
+
+                <div class="ctn_button">
+                    <button type="submit">¡Registrate!</button>
+                    <div class="separar"></div>
+                    <p style="text-align: center;">¿Tienes una cuenta?<a class="logeate" href="@Url.Action("LoginCliente","Acceso")"> Iniciar sesión</a></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>

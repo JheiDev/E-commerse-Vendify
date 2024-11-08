@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CambiarClave</title>
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="contenedor_form">
+            <form action="@Url.Action("CambiarClave", "Acceso")" method="post">
+
+                <input class="form-control" name="idusuario" value="@TempData["IdUsuario"]" type="hidden" />
+
+                <h1>CAMBIAR CONTRASEÑA</h1>
+
+                <div class="ctn_input">
+                    <label for="inputNowPassword">Ingresa tu contraseña actual:</label>
+                    <input id="inputNowPassword" name="claveactual" type="password" placeholder="Contraseña actual" />
+                </div>
+
+                <div class="ctn_input">
+                    <label for="inputNewPassword">Ingresa tu nueva contraseña:</label>
+                    <input id="inputNewPassword" name="nuevaclave" type="password" placeholder="Contraseña nueva contraseña" />
+                </div>
+
+                <div class="ctn_input">
+                    <label for="inputPassword">Confirmar contraseña:</label>
+                    <input id="inputPassword" name="confirmarclave" type="password" placeholder="Repetir nueva contraseña" />
+                </div>
+
+                @{
+                    if (ViewBag.Error != null)
+                    {
+                        <div class="form-floating mb-3">
+                            <div class="ctn_error">
+                                @ViewBag.Error
+                            </div>
+                        </div>
+                    }
+                }
+
+                <div class="ctn_button">
+                    <button type="submit">Cambiar contraseña</button>
+                    <a class="btn_volver" href="@Url.Action("Login", "Acceso")">Regresar</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+
+</body>
+</html>
